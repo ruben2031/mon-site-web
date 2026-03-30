@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Informatique - Services & Solutions</title>
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+            --success: #2ecc71;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header et Navigation */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Sections générales */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* À propos */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-list {
+            margin-top: 2rem;
+        }
+
+        .skill {
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background-color: var(--secondary);
+            border-radius: 4px;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Info<span>Tech</span></a>
+            <div class="mobile-menu">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <h1>Expert en Solutions Informatiques</h1>
+            <p>Je propose des services informatiques complets pour les particuliers et les entreprises. Réparation, maintenance, développement et conseil en technologies.</p>
+            <a href="#contact" class="btn">Contactez-moi</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mes Services</h2>
+                <p>Je propose une gamme complète de services informatiques adaptés à vos besoins</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Support Technique</h3>
+                    <p>Résolution de problèmes matériels et logiciels, installation et configuration de systèmes, assistance à distance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Sécurité Informatique</h3>
+                    <p>Protection des données, installation d'antivirus, configuration de pare-feu, sensibilisation aux bonnes pratiques.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Développement Web</h3>
+                    <p>Création de sites web responsives, applications web, solutions e-commerce et optimisation SEO.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Solutions Cloud</h3>
+                    <p>Migration vers le cloud, configuration de services, sauvegarde en ligne et solutions collaboratives.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Formation</h3>
+                    <p>Formation personnalisée sur les logiciels, les bonnes pratiques informatiques et les nouvelles technologies.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Maintenance Préventive</h3>
+                    <p>Contrats de maintenance régulière pour garantir la performance et la longévité de vos équipements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos Section -->
+    <section id="apropos">
+        <div class="container">
+            <div class="section-title">
+                <h2>À propos de moi</h2>
+                <p>Découvrez mon parcours et mes compétences</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Informaticien passionné avec 10 ans d'expérience</h3>
+                    <p>Je suis un professionnel de l'informatique avec une expertise solide dans divers domaines technologiques. Mon objectif est de fournir des solutions efficaces et adaptées à chaque client.</p>
+                    <p>Au fil des années, j'ai développé une approche centrée sur le client, en cherchant toujours à comprendre les besoins spécifiques pour proposer les meilleures solutions.</p>
+                    
+                    <div class="skills-list">
+                        <div class="skill">
+                            <div class="skill-name">
+                                <span>Réseaux & Infrastructure</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-name">
+                                <span>Développement Web</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-name">
+                                <span>Sécurité Informatique</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-name">
+                                <span>Cloud Computing</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <!-- Remplacez cette image par votre photo -->
+                    <img src="url(file:///c%3A/Users/Ruben/Downloads/photo_5308053848549166710_y.jpg)" alt="Photo de l'informaticien">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mes Réalisations</h2>
+                <p>Découvrez quelques-uns de mes projets récents</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Projet 1">
+                    <div class="portfolio-overlay">
+                        <h3>Réseau d'entreprise</h3>
+                        <p>Configuration complète d'un réseau sécurisé pour une PME</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Projet 2">
+                    <div class="portfolio-overlay">
+                        <h3>Site e-commerce</h3>
+                        <p>Développement d'une boutique en ligne avec paiement sécurisé</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Projet 3">
+                    <div class="portfolio-overlay">
+                        <h3>Migration cloud</h3>
+                        <p>Transfert sécurisé des données d'une entreprise vers le cloud</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contactez-moi</h2>
+                <p>N'hésitez pas à me contacter pour discuter de votre projet</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Adresse</h3>
+                            <p>Nijni Novgorod, Avenue Gagarina, Rue 23.</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p>+241 066-07-01-21/ +7 902-500-44-34.</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>antsyruben69@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h3>Horaires</h3>
+                            <p>Lun - Ven: 9h00 - 18h00<br>Sam: 10h00 - 16h00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>InfoTech</h3>
+                    <p>Expert en solutions informatiques pour particuliers et entreprises. Services complets et personnalisés.</p>
+                    <div class="social-links">
+                        <a href="#"><span>FB</span></a>
+                        <a href="#"><span>TW</span></a>
+                        <a href="#"><span>IN</span></a>
+                        <a href="#"><span>IG</span></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Support technique</a></li>
+                        <li><a href="#">Sécurité informatique</a></li>
+                        <li><a href="#">Développement web</a></li>
+                        <li><a href="#">Solutions cloud</a></li>
+                        <li><a href="#">Formation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 InfoTech. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('nav ul').classList.remove('active');
+            });
+        });
+
+        // Animation des barres de compétences au défilement
+        function animateSkills() {
+            const skills = document.querySelectorAll('.skill-level');
+            skills.forEach(skill => {
+                const width = skill.style.width;
+                skill.style.width = '0';
+                setTimeout(() => {
+                    skill.style.width = width;
+                }, 300);
+            });
+        }
+
+        // Observer pour animer les compétences quand elles sont visibles
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkills();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.querySelector('.skills-list'));
+
+        // Gestion du formulaire de contact
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
