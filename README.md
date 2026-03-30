@@ -1,2 +1,2 @@
 # mon-site-web
-Ruben ANTSY compagnie.
+Ruben ANTSY.
